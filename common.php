@@ -2613,10 +2613,12 @@ function render_list($path = '', $files = '')
 
         // 最后清除换行
         while (strpos($html, "\r\n\r\n")) $html = str_replace("\r\n\r\n", "\r\n", $html);
+        while (strpos($html, "\r\r")) $html = str_replace("\r\r", "\r", $html);
+        while (strpos($html, "\n\n")) $html = str_replace("\n\n", "\n", $html);
         //while (strpos($html, PHP_EOL.PHP_EOL)) $html = str_replace(PHP_EOL.PHP_EOL, PHP_EOL, $html);
 
         $exetime = round(microtime(true)-$_SERVER['php_starttime'],3);
-        $html = str_replace('<!--FootStr-->', date("Y-m-d H:i:s")." ".getconstStr('Week')[date("w")]." ".$_SERVER['REMOTE_ADDR'].' Runtime:'.$exetime.'s Mem:'.size_format(memory_get_usage()), $html);
+        $html = str_replace('<!--FootStr-->', date("Y-m-d H:i:s")." ".getconstStr('Week')[date("w")]." ".$_SERVER['REMOTE_ADDR'].' Runingtime:'.$exetime.'s Mem:'.size_format(memory_get_usage()), $html);
     }
 
     $theme_arr = scandir('theme');
@@ -2632,7 +2634,7 @@ function render_list($path = '', $files = '')
     //if ($tmp!='') $html .= '
     //    <option value="" '.($tmp==$theme?'selected="selected"':'').'>customTheme</option>';
     $html .= '
-        </select>
+    </select>
 </div>
 <script type="text/javascript">
     function changetheme(str)
