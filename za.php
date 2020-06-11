@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$API_KEY = "1146216534:AAHUaKVZKBhRiXGBBnkQdpLbpGClw4mf3ZU";
+$API_KEY = "1107009022:AAHkOzKjK4pDf9D7i-C8-PH5x1NI-61iVe8";
 define('API_KEY',$API_KEY);
 
 function bot($method,$datas=[]){
